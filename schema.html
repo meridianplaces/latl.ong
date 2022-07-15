@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meridian</title>
+    <link rel="stylesheet" href="css/simple.min.css">
+  </head>
+<body>
+
+<header>
+  <h1>🗺️ Meridian</h1>
+  <p>OpenStreetMap-based places database and API.</p>
+  <nav>
+  	<a href="/">Overview</a>
+  	<a href="database.html">Database</a>
+  	<a href="license.html">License</a>
+  </nav>
+</header>
+
+<main>
+
+<p>MySQL will be used with support for spatial queries. This requires MySQL version 5.7 or later.</p>
+
+<p>The schema will be a lightweight, simplification of OpenStreetMap tags, streamlined to the basics. Columns:</p>
+
+<ul>
+<li>id</li>
+<li>osm_id</li>
+<li>osm_type (node, way, route)</li>
+<li>name</li>
+<li>latitude</li>
+<li>longitude</li>
+<li>pt</li>
+<li>type</li>
+<li>icon (Font Awesome names)</li>
+<li>address_street (1234 My Street)</li>
+<li>address_city</li>
+<li>address_region (TX)</li>
+<li>address_postalcode</li>
+<li>address_country</li>
+<li>visited_count</li>
+<li>created_at</li>
+<li>updated_at</li>
+</ul>
+
+<p>Longitude and latitude are stored in both separate FLOAT columns and as POINT, for more flexibility with querying and indexes.</p>
+
+<p>The import script will process OSM data and try to determine type and icon for each place. Special files <code>types.json</code> and <code>icons.json</code> map OSM tags like &#8220;amenity&#8221;, &#8220;cuisine&#8221;, &#8220;tourism&#8221;, and others to Meridian&#8217;s types and icons.</p>
+
+</main>
+    
+</body>
+</html>
