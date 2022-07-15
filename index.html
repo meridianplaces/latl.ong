@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <title>Meridian</title>
+  </head>
+<body>
+
+<h1>🗺️ Meridian</h1>
+
+<p>Meridian is an OpenStreetMap-based places database and API. It is designed around solving 2 specific problems:</p>
+
+<ul>
+<li>Finding nearby places given a user&#8217;s current latitude and longitude. Public places like restaurants, coffee shops, parks, grocery stores, landmarks, basketball arenas, and airpots.</li>
+<li>Contributing new places back to OpenStreetMap as users create new places that they need to use or check into. OpenStreetMap is incomplete compared to Foursquare, Google Maps, or Apple Maps. The best way to expand OpenStreetMap&#8217;s database is to have good clients that anyone can use.</li>
+</ul>
+
+<p>Instead of another centralized service, Meridian is an open source project that can be hosted for app-specific purposes. Setup will take a dump of OpenStreetMap and extract places from it, loading them into a local database. It could be hosted as a standalone service or plugged into existing platforms like Micro.blog.</p>
+
+<p>The API will be focused on 3 endpoints:</p>
+
+<ul>
+<li>Querying nearby places from a latitude and longitude.</li>
+<li>Adding a new place.</li>
+<li>Editing an existing place to provide better metadata.</li>
+</ul>
+
+<p>Blogging platforms may also wish to take Micropub API requests and route portions of the data through Meridian for updating places automatically as posts are created.</p>
+
+<p>If configured with an OpenStreetMap account, adding or editing places will push those changes back to OpenStreetMap in the background. Otherwise the changes will be stored locally.</p>
+
+<p>There should be a mechanism to pull in new dumps of data from OpenStreetMap. That way as multiple instances of Meridian are deployed, as one instance improves, those improvements can make it back to other instances by syncing through OSM.</p>
+
+<h2>Schema</h2>
+
+<p>MySQL will be used with support for spatial queries. This requires MySQL version 5.7 or later.</p>
+
+<p>The schema will be a lightweight, simplification of OpenStreetMap tags, streamlined to the basics. Columns:</p>
+
+<ul>
+<li>id</li>
+<li>osm_id</li>
+<li>osm_type (node, way, route)</li>
+<li>name</li>
+<li>latitude</li>
+<li>longitude</li>
+<li>pt</li>
+<li>type</li>
+<li>icon (Font Awesome names)</li>
+<li>address_street (1234 My Street)</li>
+<li>address_city</li>
+<li>address_region (TX)</li>
+<li>address_postalcode</li>
+<li>address_country</li>
+<li>visited_count</li>
+<li>created_at</li>
+<li>updated_at</li>
+</ul>
+
+<p>Longitude and latitude are stored in both separate FLOAT columns and as POINT, for more flexibility with querying and indexes.</p>
+
+<p>The import script will process OSM data and try to determine type and icon for each place. Special files <code>types.json</code> and <code>icons.json</code> map OSM tags like &#8220;amenity&#8221;, &#8220;cuisine&#8221;, &#8220;tourism&#8221;, and others to Meridian&#8217;s types and icons.</p>
+
+<h2>What it doesn&#8217;t do</h2>
+
+<p>Meridian is not a full replacement for check-in services like Foursquare. It&#8217;s also not a blogging platform. It does not keep track of where someone has been. Those are features that could be built as separate platforms on top of Meridian.</p>
+
+<h2>Licensing</h2>
+
+<p>Meridian is open source. Place data is copyright OpenStreetMap and apps using this data should follow OSM&#8217;s attribution rules.</p>
+
+</body>
+</html>
