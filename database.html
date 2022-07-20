@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meridian</title>
@@ -16,6 +16,7 @@
   	<a href="database.html">Database</a>
     <a href="api.html">API</a>
   	<a href="license.html">License</a>
+    <a href="https://github.com/meridianplaces/meridian">GitHub</a>
   </nav>
 </header>
 
@@ -26,23 +27,23 @@
 <p>The schema will be a lightweight, simplification of OpenStreetMap tags, streamlined to the basics. Columns:</p>
 
 <ul>
-<li>id</li>
-<li>osm_id</li>
-<li>osm_type (node, way, route)</li>
-<li>name</li>
-<li>latitude</li>
-<li>longitude</li>
-<li>pt</li>
-<li>type</li>
-<li>icon (Font Awesome names)</li>
-<li>address_street (1234 My Street)</li>
-<li>address_city</li>
-<li>address_region (TX)</li>
-<li>address_postalcode</li>
-<li>address_country</li>
-<li>visited_count</li>
-<li>created_at</li>
-<li>updated_at</li>
+  <li>id</li>
+  <li>osm_id</li>
+  <li>osm_type (node, way, route)</li>
+  <li>name</li>
+  <li>latitude</li>
+  <li>longitude</li>
+  <li>pt</li>
+  <li>type</li>
+  <li>icon (Font Awesome names)</li>
+  <li>address_street (1234 My Street)</li>
+  <li>address_city</li>
+  <li>address_region (TX)</li>
+  <li>address_postalcode</li>
+  <li>address_country</li>
+  <li>visited_count</li>
+  <li>created_at</li>
+  <li>updated_at</li>
 </ul>
 
 <p>Longitude and latitude are stored in both separate FLOAT columns and as POINT, for more flexibility with querying and indexes.</p>
